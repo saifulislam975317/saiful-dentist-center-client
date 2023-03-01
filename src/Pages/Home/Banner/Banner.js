@@ -3,6 +3,7 @@ import img from "../../../assets/images/chair.png";
 import background from "../../../assets/images/bg.png";
 import "./Banner.css";
 import PrimaryButton from "../../../PrimaryButton/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -24,7 +25,9 @@ const Banner = () => {
             oral health and a confident, beautiful smile. Book your appointment
             today and experience the difference in dental care at our hospital.
           </p>
-          <PrimaryButton>Get Started</PrimaryButton>
+          <Link to="/appointment">
+            <PrimaryButton>Get Appointment</PrimaryButton>
+          </Link>
         </div>
       </div>
     </div>

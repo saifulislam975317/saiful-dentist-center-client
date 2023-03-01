@@ -1,7 +1,7 @@
 import React from "react";
 
 const AppointmentOption = ({ option, setBookingAppointment }) => {
-  const { name, slots } = option;
+  const { name, slots, price } = option;
   return (
     <div className="card mt-5 shadow-xl">
       <div className="card-body text-center">
@@ -10,6 +10,7 @@ const AppointmentOption = ({ option, setBookingAppointment }) => {
         <p>
           {slots.length} {slots.length > 1 ? "spaces" : "space"} available
         </p>
+        <p className="text-xl">Price:${price}</p>
         <div className="card-actions justify-center">
           <label
             onClick={() => setBookingAppointment(option)}

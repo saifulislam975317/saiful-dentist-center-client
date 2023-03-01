@@ -2,6 +2,7 @@ import React from "react";
 import doctor from "../../../assets/images/doctor.png";
 import appointment from "../../../assets/images/appointment.png";
 import PrimaryButton from "../../../PrimaryButton/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const MakeAppointment = () => {
   return (
@@ -27,7 +28,9 @@ const MakeAppointment = () => {
               yourself. Good dental health is a crucial aspect of overall
               well-being.
             </p>
-            <PrimaryButton>Get Started</PrimaryButton>
+            <Link to="/appointment">
+              <PrimaryButton>Get Appointment</PrimaryButton>
+            </Link>
           </div>
         </div>
       </div>

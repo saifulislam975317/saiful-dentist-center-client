@@ -1,18 +1,22 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookingModal = ({
   bookingAppointment,
   setBookingAppointment,
   selectedDate,
+  refetch,
 }) => {
-  const { name, slots } = bookingAppointment;
+  const { user } = useContext(AuthContext);
+  const { name, slots, price } = bookingAppointment;
   const date = format(selectedDate, "PP");
 
   const handleBooking = (event) => {
     event.preventDefault();
     const form = event.target;
-    const slot = form.slot.value;
+    const time = form.slot.value;
     const name = form.name.value;
     const phone = form.phone.value;
     const email = form.email.value;
@@ -20,17 +24,34 @@ const BookingModal = ({
       appointmentDate: date,
       serviceName: bookingAppointment.name,
       patientName: name,
-      slot,
+      time,
       email,
       phone,
+      price,
     };
-    console.log(booking);
-    setBookingAppointment(null);
+
+    fetch("https://saiful-dentist-center-server.vercel.app/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          setBookingAppointment(null);
+          toast.success("Booking confirmed");
+          refetch();
+        } else {
+          toast.error(data.message);
+        }
+      });
   };
   return (
     <>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal pr-14">
         <div className="modal-box relative">
           <label
             htmlFor="booking-modal"
@@ -60,12 +81,16 @@ const BookingModal = ({
             <input
               type="text"
               name="name"
+              defaultValue={user?.displayName}
+              disabled
               placeholder="Enter your name"
               className="input input-bordered w-full "
             />
             <input
               type="email"
               name="email"
+              defaultValue={user?.email}
+              disabled
               placeholder="Enter your email"
               className="input input-bordered w-full "
               required

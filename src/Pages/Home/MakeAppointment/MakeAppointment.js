@@ -1,5 +1,5 @@
 import React from "react";
-import doctor from "../../../assets/images/doctor.png";
+import doctor from "../../../assets/images/pictures/b-4.jpg";
 import appointment from "../../../assets/images/appointment.png";
 import PrimaryButton from "../../../PrimaryButton/PrimaryButton";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ const MakeAppointment = () => {
       <div className="hero  ">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            className="rounded-lg hidden md:block lg:block w-1/2 -mt-36"
+            className="rounded-lg hidden md:block lg:block w-1/2"
             src={doctor}
             alt=""
           />

@@ -57,7 +57,7 @@ const Login = () => {
       .then((data) => {
         if (data.accessToken) {
           localStorage.setItem("access-token", data.accessToken);
-          navigate("/");
+          navigate(from, { replace: true });
           window.location.reload();
         }
       });

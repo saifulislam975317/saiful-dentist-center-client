@@ -3,7 +3,7 @@ import React from "react";
 const AppointmentOption = ({ option, setBookingAppointment }) => {
   const { name, slots, price } = option;
   return (
-    <div className="card mt-5 shadow-xl">
+    <div className="card mt-2 shadow-xl">
       <div className="card-body text-center">
         <h2 className="text-2xl text-secondary">{name}</h2>
         <p>{slots.length > 0 ? slots[0] : "Try another date"}</p>

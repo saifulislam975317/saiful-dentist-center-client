@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../../../../assets/images/treatment.png";
+import img from "../../../../assets/images/pictures/d-1.jpg";
 import PrimaryButton from "../../../../PrimaryButton/PrimaryButton";
 const ExceptionalCare = () => {
   return (

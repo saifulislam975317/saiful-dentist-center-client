@@ -1,4 +1,4 @@
-import chair from "../../assets/images/chair.png";
+import banner from "../../assets/images/pictures/b-5.jpg";
 import { DayPicker } from "react-day-picker";
 import bgImage from "../../assets/images/bg.png";
 
@@ -11,9 +11,9 @@ const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
       <div className="hero ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
-            src={chair}
+            src={banner}
             alt="doctor chair"
-            className="lg:w-3/5 rounded-lg shadow-2xl"
+            className="lg:w-[35%] rounded-lg shadow-2xl"
           />
           <div className="mr-32">
             <DayPicker

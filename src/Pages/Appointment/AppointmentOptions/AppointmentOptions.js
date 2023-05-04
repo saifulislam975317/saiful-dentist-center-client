@@ -3,12 +3,17 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOption from "./AppointmentOption";
+import Loading from "../../Shared/Loading/Loading";
 
 const AppointmentOptions = ({ selectedDate }) => {
   const [bookingAppointment, setBookingAppointment] = useState(null);
   const date = format(selectedDate, "PP");
 
-  const { data: appointmentOptions = [], refetch } = useQuery({
+  const {
+    data: appointmentOptions = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["appointmentOptions", date],
     queryFn: async () => {
       const res = await fetch(
@@ -20,10 +25,14 @@ const AppointmentOptions = ({ selectedDate }) => {
   });
   refetch();
 
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <section>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20">
-        {appointmentOptions.map((option) => (
+        {appointmentOptions?.map((option) => (
           <AppointmentOption
             key={option._id}
             option={option}
